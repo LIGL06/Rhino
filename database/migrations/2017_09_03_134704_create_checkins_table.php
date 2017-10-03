@@ -16,6 +16,7 @@ class CreateCheckinsTable extends Migration
         Schema::create('checkins', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('card_id')->unsigned();
+            $table->integer('bus_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->timestamps();
         });

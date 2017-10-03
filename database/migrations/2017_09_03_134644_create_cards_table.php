@@ -17,6 +17,8 @@ class CreateCardsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('tag',45)->unique();
+            $table->date('valid_until');
+            $table->boolean('renew_approval');
             $table->timestamps();
         });
 
