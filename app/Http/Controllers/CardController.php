@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Card;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class CardController extends Controller
      */
     public function index()
     {
-        //
+        return 'Card controller';
     }
 
     /**
@@ -24,7 +25,8 @@ class CardController extends Controller
      */
     public function create()
     {
-        //
+        $persons = \App\Models\User::select('name','id')->get();
+        return view('cards.create', ['persons'=> $persons, ]);
     }
 
     /**
@@ -35,7 +37,12 @@ class CardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return \App\Models\Card::create([
+          'user_id' => $request->user_id,
+          'tag' => $request->tag,
+          'valid_until' => Carbon::now()->addYear(),
+          'renew_approval' => false
+        ]);
     }
 
     /**
@@ -44,9 +51,9 @@ class CardController extends Controller
      * @param  \App\Card  $card
      * @return \Illuminate\Http\Response
      */
-    public function show(Card $card)
+    public function show($id)
     {
-        //
+        return \App\Models\Card::findOrFail($id)->get();
     }
 
     /**
@@ -55,7 +62,7 @@ class CardController extends Controller
      * @param  \App\Card  $card
      * @return \Illuminate\Http\Response
      */
-    public function edit(Card $card)
+    public function edit($id)
     {
         //
     }
@@ -67,7 +74,7 @@ class CardController extends Controller
      * @param  \App\Card  $card
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Card $card)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -78,7 +85,7 @@ class CardController extends Controller
      * @param  \App\Card  $card
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Card $card)
+    public function destroy($id)
     {
         //
     }
