@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
-use App\Card;
+use App\Models\Card;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CardController extends Controller
@@ -25,7 +26,7 @@ class CardController extends Controller
      */
     public function create()
     {
-        $persons = \App\Models\User::select('name','id')->get();
+        $persons = User::select('name','id')->get();
         return view('cards.create', ['persons'=> $persons, ]);
     }
 
@@ -37,7 +38,7 @@ class CardController extends Controller
      */
     public function store(Request $request)
     {
-        return \App\Models\Card::create([
+        return Card::create([
           'user_id' => $request->user_id,
           'tag' => $request->tag,
           'valid_until' => Carbon::now()->addYear(),
@@ -53,7 +54,7 @@ class CardController extends Controller
      */
     public function show($id)
     {
-        return \App\Models\Card::findOrFail($id)->get();
+        return Card::whereId($id)->with('user')->get();
     }
 
     /**
@@ -64,7 +65,7 @@ class CardController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('cards.edit', ['card'=> Card::whereId($id)->with('user')->get()]);
     }
 
     /**
@@ -76,7 +77,11 @@ class CardController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Card::whereIdFail($id)->update([
+            'renew_approval'=> $request->renew_approval,
+        ]);
+        $request->session()->flash('message','Tarjeta actualizada');
+        return redirect()->action('CardController@edit',$id);
     }
 
     /**
