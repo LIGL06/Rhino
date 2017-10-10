@@ -14,7 +14,7 @@ class SchoolController extends Controller
      */
     public function index()
     {
-        //
+        return 'School Controller';
     }
 
     /**
@@ -24,7 +24,8 @@ class SchoolController extends Controller
      */
     public function create()
     {
-        //
+        $schools = School::select('name','id')->get();
+        return view('schools.create', ['schools'=> $schools, ]);
     }
 
     /**
@@ -35,7 +36,11 @@ class SchoolController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return School::create([
+            'school_id' => $request->school_id,
+            'address' => $request->address,
+            'name' => $request->name
+          ]);
     }
 
     /**
@@ -46,7 +51,7 @@ class SchoolController extends Controller
      */
     public function show(School $school)
     {
-        //
+        return School::whereId($id)->get();
     }
 
     /**
@@ -57,7 +62,7 @@ class SchoolController extends Controller
      */
     public function edit(School $school)
     {
-        //
+        return view('schools.edit', ['school'=> School::whereId($id)->get()]);
     }
 
     /**

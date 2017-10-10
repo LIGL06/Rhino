@@ -14,7 +14,7 @@ class ElderController extends Controller
      */
     public function index()
     {
-        //
+        return 'Elde Controller';
     }
 
     /**
@@ -24,7 +24,8 @@ class ElderController extends Controller
      */
     public function create()
     {
-        //
+        $persons = User::select('name','id')->get();
+        return view('elders.create', ['persons'=> $persons, ]);
     }
 
     /**
@@ -35,7 +36,13 @@ class ElderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return Elder::create([
+            'elder_id' => $request->elder_id,
+            'office_id' => $request->office_id,
+            'user_id' => $request->user_id,
+            'SKU' => $request->SKU
+          ]);
+      
     }
 
     /**
@@ -46,7 +53,7 @@ class ElderController extends Controller
      */
     public function show(Elder $elder)
     {
-        //
+        return Elder::whereId($id)->with('user')->get();
     }
 
     /**
@@ -57,7 +64,7 @@ class ElderController extends Controller
      */
     public function edit(Elder $elder)
     {
-        //
+        return view('elders.edit', ['elder'=> Elder::whereId($id)->with('user')->get()]);
     }
 
     /**
