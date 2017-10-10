@@ -14,7 +14,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+        return 'Student Controller';
     }
 
     /**
@@ -24,7 +24,8 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        $persons = User::select('name','id')->get();
+        return view('students.create', ['persons'=> $persons, ]);
     }
 
     /**
@@ -35,7 +36,13 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return Student::create([
+          'student_id' => $request->student_id,
+          'school_id' => $request->school_id,
+          'user_id' => $request->user_id,
+          'SKU' => $request->SKU,
+          'student_validated' => false
+        ]);
     }
 
     /**
@@ -46,7 +53,7 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        //
+        return Student::whereId($id)->with('user')->get();
     }
 
     /**
@@ -57,7 +64,7 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        //
+        return view('students.edit', ['student'=> Student::whereId($id)->with('user')->get()]);
     }
 
     /**
