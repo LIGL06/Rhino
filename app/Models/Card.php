@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace Rhino\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -36,6 +36,6 @@ class Card extends Model
      */
     public function user()
     {
-        return $this->BelongsTo('App\Models\User');
+        return $this->BelongsTo('Rhino\Models\User');
     }
 }

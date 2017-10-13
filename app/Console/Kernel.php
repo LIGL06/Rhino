@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console;
+namespace Rhino\Console;
 
 use Carbon\Carbon;
 use Illuminate\Console\Scheduling\Schedule;
@@ -14,7 +14,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        \App\Console\Commands\CardStatus::class,
+        \Rhino\Console\Commands\CardStatus::class,
     ];
 
     /**
@@ -26,7 +26,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->call(function(){
-            \App\Models\Card::where('valid_until','<=',Carbon::now())->with('user')->get();
+            \Rhino\Models\Card::where('valid_until','<=',Carbon::now())->with('user')->get();
         })->monthly();
     }
 

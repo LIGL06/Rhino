@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace Rhino\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

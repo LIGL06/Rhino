@@ -172,11 +172,11 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        Rhino\Providers\AppServiceProvider::class,
+        Rhino\Providers\AuthServiceProvider::class,
+        // Rhino\Providers\BroadcastServiceProvider::class,
+        Rhino\Providers\EventServiceProvider::class,
+        Rhino\Providers\RouteServiceProvider::class,
 
     ],
 

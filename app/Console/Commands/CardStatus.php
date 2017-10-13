@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Console\Commands;
+namespace Rhino\Console\Commands;
 
-use App\Models\User;
-use App\Mail\CardStatusMail;
+use Rhino\Models\User;
+use Rhino\Mail\CardStatusMail;
 use Illuminate\Console\Command;
 
 class CardStatus extends Command

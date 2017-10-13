@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Rhino\Http\Controllers;
 
-use App\Student;
+use Rhino\Models\Student;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -48,10 +48,10 @@ class StudentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Student  $student
+     * @param  \Rhino\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function show(Student $student)
+    public function show($id)
     {
         return Student::whereId($id)->with('user')->get();
     }
@@ -59,7 +59,7 @@ class StudentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Student  $student
+     * @param  \Rhino\Student  $student
      * @return \Illuminate\Http\Response
      */
     public function edit(Student $student)
@@ -71,7 +71,7 @@ class StudentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Student  $student
+     * @param  \Rhino\Student  $student
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Student $student)
@@ -82,7 +82,7 @@ class StudentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Student  $student
+     * @param  \Rhino\Student  $student
      * @return \Illuminate\Http\Response
      */
     public function destroy(Student $student)

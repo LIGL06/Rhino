@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Rhino\Http\Controllers;
 
-use App\Office;
+use Rhino\Office;
 use Illuminate\Http\Request;
 
 class OfficeController extends Controller
@@ -46,7 +46,7 @@ class OfficeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Office  $office
+     * @param  \Rhino\Office  $office
      * @return \Illuminate\Http\Response
      */
     public function show(Office $office)
@@ -57,7 +57,7 @@ class OfficeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Office  $office
+     * @param  \Rhino\Office  $office
      * @return \Illuminate\Http\Response
      */
     public function edit(Office $office)
@@ -69,7 +69,7 @@ class OfficeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Office  $office
+     * @param  \Rhino\Office  $office
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Office $office)
@@ -80,7 +80,7 @@ class OfficeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Office  $office
+     * @param  \Rhino\Office  $office
      * @return \Illuminate\Http\Response
      */
     public function destroy(Office $office)

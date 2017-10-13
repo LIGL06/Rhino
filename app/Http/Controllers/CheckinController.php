@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Rhino\Http\Controllers;
 
-use App\Checkin;
+use Rhino\Checkin;
 use Illuminate\Http\Request;
 
 class CheckinController extends Controller
@@ -47,7 +47,7 @@ class CheckinController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Checkin  $checkin
+     * @param  \Rhino\Checkin  $checkin
      * @return \Illuminate\Http\Response
      */
     public function show(Checkin $checkin)
@@ -58,7 +58,7 @@ class CheckinController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Checkin  $checkin
+     * @param  \Rhino\Checkin  $checkin
      * @return \Illuminate\Http\Response
      */
     public function edit(Checkin $checkin)
@@ -70,7 +70,7 @@ class CheckinController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Checkin  $checkin
+     * @param  \Rhino\Checkin  $checkin
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Checkin $checkin)
@@ -81,7 +81,7 @@ class CheckinController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Checkin  $checkin
+     * @param  \Rhino\Checkin  $checkin
      * @return \Illuminate\Http\Response
      */
     public function destroy(Checkin $checkin)

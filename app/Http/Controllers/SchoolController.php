@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Rhino\Http\Controllers;
 
-use App\School;
+use Rhino\School;
 use Illuminate\Http\Request;
 
 class SchoolController extends Controller
@@ -46,7 +46,7 @@ class SchoolController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\School  $school
+     * @param  \Rhino\School  $school
      * @return \Illuminate\Http\Response
      */
     public function show(School $school)
@@ -57,7 +57,7 @@ class SchoolController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\School  $school
+     * @param  \Rhino\School  $school
      * @return \Illuminate\Http\Response
      */
     public function edit(School $school)
@@ -69,7 +69,7 @@ class SchoolController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\School  $school
+     * @param  \Rhino\School  $school
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, School $school)
@@ -80,7 +80,7 @@ class SchoolController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\School  $school
+     * @param  \Rhino\School  $school
      * @return \Illuminate\Http\Response
      */
     public function destroy(School $school)

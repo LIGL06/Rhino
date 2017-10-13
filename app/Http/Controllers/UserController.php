@@ -2,10 +2,10 @@
 
 namespace Rhino\Http\Controllers;
 
-use Rhino\Elder;
+use Rhino\Models\User;
 use Illuminate\Http\Request;
 
-class ElderController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class ElderController extends Controller
      */
     public function index()
     {
-        return 'Elde Controller';
+        return User::where('role_id','=',2)->get();
     }
 
     /**
@@ -24,8 +24,7 @@ class ElderController extends Controller
      */
     public function create()
     {
-        $persons = User::select('name','id')->get();
-        return view('elders.create', ['persons'=> $persons, ]);
+        //
     }
 
     /**
@@ -36,45 +35,39 @@ class ElderController extends Controller
      */
     public function store(Request $request)
     {
-        return Elder::create([
-            'elder_id' => $request->elder_id,
-            'office_id' => $request->office_id,
-            'user_id' => $request->user_id,
-            'SKU' => $request->SKU
-          ]);
-      
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \Rhino\Elder  $elder
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Elder $elder)
+    public function show($id)
     {
-        return Elder::whereId($id)->with('user')->get();
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \Rhino\Elder  $elder
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Elder $elder)
+    public function edit($id)
     {
-        return view('elders.edit', ['elder'=> Elder::whereId($id)->with('user')->get()]);
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Rhino\Elder  $elder
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Elder $elder)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -82,10 +75,10 @@ class ElderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Rhino\Elder  $elder
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Elder $elder)
+    public function destroy($id)
     {
         //
     }

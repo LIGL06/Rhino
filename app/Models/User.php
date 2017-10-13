@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace Rhino\Models;
 
+use Rhino\Models\Role;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -26,4 +27,5 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token','address','age','phone'
     ];
+    
 }

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Rhino\Http\Controllers;
 
 use Carbon\Carbon;
-use App\Models\Card;
-use App\Models\User;
+use Rhino\Models\Card;
+use Rhino\Models\User;
 use Illuminate\Http\Request;
 
 class CardController extends Controller
@@ -49,7 +49,7 @@ class CardController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Card  $card
+     * @param  \Rhino\Card  $card
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -60,7 +60,7 @@ class CardController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Card  $card
+     * @param  \Rhino\Card  $card
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -72,7 +72,7 @@ class CardController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Card  $card
+     * @param  \Rhino\Card  $card
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -87,7 +87,7 @@ class CardController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Card  $card
+     * @param  \Rhino\Card  $card
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
