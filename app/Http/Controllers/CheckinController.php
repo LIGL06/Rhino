@@ -14,7 +14,7 @@ class CheckinController extends Controller
      */
     public function index()
     {
-        //
+        return 'Checkin Controller';
     }
 
     /**
@@ -24,7 +24,8 @@ class CheckinController extends Controller
      */
     public function create()
     {
-        //
+        $checkins = Checkin::select('id')->get();
+        return view('checkins.create', ['checkins'=> $checkins, ]);
     }
 
     /**
@@ -35,7 +36,12 @@ class CheckinController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return Checkin::create([
+            'checkin_id' => $request->checkin_id,
+            'card_id' => $request->card_id,
+            'bus_id' => $request->bus_id,
+            'user_id' => $request->user_id
+          ]);
     }
 
     /**
@@ -46,7 +52,7 @@ class CheckinController extends Controller
      */
     public function show(Checkin $checkin)
     {
-        //
+        return Checkin::whereId($id)->get();
     }
 
     /**
@@ -57,7 +63,7 @@ class CheckinController extends Controller
      */
     public function edit(Checkin $checkin)
     {
-        //
+        return view('checkins.edit', ['checkin'=> Checkin::whereId($id)->get()]);
     }
 
     /**

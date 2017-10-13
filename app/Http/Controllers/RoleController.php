@@ -14,7 +14,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
+        return 'Role Controller';
     }
 
     /**
@@ -24,7 +24,8 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        $roles = School::select('id','type')->get();
+        return view('roles.create', ['roles'=> $roles, ]);
     }
 
     /**
@@ -35,7 +36,12 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return Role::create([
+            'role_id' => $request->role_id,
+            'type' => $request->type,
+            'office_id' => $request->office_id,
+            'school_id' => $request->school_id
+          ]);
     }
 
     /**
@@ -46,7 +52,7 @@ class RoleController extends Controller
      */
     public function show(Role $role)
     {
-        //
+        return Role::whereId($id)->get();
     }
 
     /**
@@ -57,7 +63,7 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        //
+        return view('roles.edit', ['role'=> Role::whereId($id)->get()]);
     }
 
     /**

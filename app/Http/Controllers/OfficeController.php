@@ -14,7 +14,7 @@ class OfficeController extends Controller
      */
     public function index()
     {
-        //
+        return 'Office Controller';
     }
 
     /**
@@ -24,7 +24,8 @@ class OfficeController extends Controller
      */
     public function create()
     {
-        //
+        $offices = Office::select('name','id')->get();
+        return view('offices.create', ['offices'=> $offices, ]);
     }
 
     /**
@@ -35,7 +36,11 @@ class OfficeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return Office::create([
+            'office_id' => $request->office_id,
+            'address' => $request->address,
+            'name' => $request->name
+          ]);
     }
 
     /**
@@ -46,7 +51,7 @@ class OfficeController extends Controller
      */
     public function show(Office $office)
     {
-        //
+        return Office::whereId($id)->get();
     }
 
     /**
@@ -57,7 +62,7 @@ class OfficeController extends Controller
      */
     public function edit(Office $office)
     {
-        //
+        return view('offices.edit', ['office'=> Office::whereId($id)->get()]);
     }
 
     /**
