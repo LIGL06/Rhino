@@ -77,7 +77,7 @@ class CardController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Card::whereIdFail($id)->update([
+        Card::whereId($id)->update([
             'renew_approval'=> $request->renew_approval,
         ]);
         $request->session()->flash('message','Tarjeta actualizada');
