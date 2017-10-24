@@ -28,4 +28,11 @@ class User extends Authenticatable
         'password', 'remember_token','address','age','phone'
     ];
     
+    /**
+     * Get the user that owns the phone.
+     */
+    public function checkin()
+    {
+        return $this->hasMany('Rhino\Models\Checkin');
+    }
 }

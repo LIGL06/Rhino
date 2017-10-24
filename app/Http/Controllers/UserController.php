@@ -14,7 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::where('role_id','=',2)->get();
+        // return User::where('role_id','=',2)->get();
+        return view('user.index');
     }
 
     /**
@@ -24,7 +25,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.create');
     }
 
     /**
