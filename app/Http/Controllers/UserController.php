@@ -14,8 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        // return User::where('role_id','=',2)->get();
-        return view('user.index');
+        $users = User::all();
+        return view('user.index',['users'=>$users]);
     }
 
     /**

@@ -18,7 +18,7 @@ class CreateStudentsTable extends Migration
             $table->integer('school_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->string('SKU',45)->unique();
-            $table->boolean('student_validated');
+            $table->boolean('student_validated')->default(0);
             $table->timestamps();
         });
     }
