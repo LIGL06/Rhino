@@ -30,7 +30,7 @@
                                     <tr>
                                         <td>{{$user->fname}}</td>
                                         <td>{{$user->lname}}</td>
-                                        @if($user->tipe=3)
+                                        @if($user->role_id==3)
                                         <td>Estudiante</td>
                                         @else
                                         <td>INAPAM</td>

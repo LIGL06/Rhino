@@ -58,7 +58,7 @@ class UserController extends Controller
                         ->withErrors($validator)
                         ->withInput();
         }else{
-            if($request->role_id = 3){
+            if($request->role_id == 3){
                 $student = User::create([
                     'fname' => $request->fname,
                     'lname' => $request->lname,
@@ -67,7 +67,7 @@ class UserController extends Controller
                     'colonia' => $request->colonia,
                     'postal' => $request->postal,
                     'birthday' => $request->birthday,
-                    'role_id' => $request->role_id,
+                    'role_id' => 3,
                     'email' => $request->email,
                     'password' => bcrypt('student')
                 ]);
@@ -77,9 +77,8 @@ class UserController extends Controller
                     'SKU' => $request->tag,
                     'student_validated' => true
                 ]);
-                Card::create([
+                Card::updateOrCreate(['tag' => $request->tag],[
                     'user_id' => $student->id,
-                    'tag' => $request->tag,
                     'valid_until' => \Carbon\Carbon::now()->addYear(),
                     'renew_approval' => true
                 ]);
@@ -93,7 +92,7 @@ class UserController extends Controller
                     'colonia' => $request->colonia,
                     'postal' => $request->postal,
                     'birthday' => $request->birthday,
-                    'role_id' => $request->role_id,
+                    'role_id' => 4,
                     'email' => $request->email,
                     'password' => bcrypt('elder')
                 ]);
@@ -102,9 +101,8 @@ class UserController extends Controller
                     'user_id' => $elder->id,
                     'SKU' => $request->tag
                 ]);
-                Card::create([
+                Card::updateOrCreate(['tag' => $request->tag],[
                     'user_id' => $elder->id,
-                    'tag' => $request->tag,
                     'valid_until' => \Carbon\Carbon::now()->addYear(),
                     'renew_approval' => true
                 ]);
