@@ -2,6 +2,10 @@
 
 namespace Rhino\Http\Controllers;
 
+use Validator;
+use Rhino\Models\Card;
+use Rhino\Models\Elder;
+use Rhino\Models\Student;
 use Rhino\Models\User;
 use Illuminate\Http\Request;
 
@@ -14,7 +18,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::where('role_id','>',2)->with('card')->get();
         return view('user.index',['users'=>$users]);
     }
 
@@ -25,7 +29,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user.create');
+        $card = Card::doesntHave('user')->latest()->get()->pluck('tag');
+        return view('user.create', ['tag' => $card]);
     }
 
     /**
@@ -36,7 +41,77 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'fname' => 'required',
+            'lname' => 'required',
+            'address' => 'required',
+            'city' => 'required',
+            'colonia' => 'required',
+            'postal' => 'required',
+            'birthday' => 'required',
+            'role_id' => 'required',
+            'email' => 'required|unique:users|max:255',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('user/create')
+                        ->withErrors($validator)
+                        ->withInput();
+        }else{
+            if($request->role_id = 3){
+                $student = User::create([
+                    'fname' => $request->fname,
+                    'lname' => $request->lname,
+                    'address' => $request->address,
+                    'city' => $request->city,
+                    'colonia' => $request->colonia,
+                    'postal' => $request->postal,
+                    'birthday' => $request->birthday,
+                    'role_id' => $request->role_id,
+                    'email' => $request->email,
+                    'password' => bcrypt('student')
+                ]);
+                Student::create([
+                    'school_id' => 1,
+                    'user_id' => $student->id,
+                    'SKU' => $request->tag,
+                    'student_validated' => true
+                ]);
+                Card::create([
+                    'user_id' => $student->id,
+                    'tag' => $request->tag,
+                    'valid_until' => \Carbon\Carbon::now()->addYear(),
+                    'renew_approval' => true
+                ]);
+                return redirect()->action('UserController@index');
+            }else{
+                $elder =  User::create([
+                    'fname' => $request->fname,
+                    'lname' => $request->lname,
+                    'address' => $request->address,
+                    'city' => $request->city,
+                    'colonia' => $request->colonia,
+                    'postal' => $request->postal,
+                    'birthday' => $request->birthday,
+                    'role_id' => $request->role_id,
+                    'email' => $request->email,
+                    'password' => bcrypt('elder')
+                ]);
+                Elder::create([
+                    'office_id' => 1,
+                    'user_id' => $elder->id,
+                    'SKU' => $request->tag
+                ]);
+                Card::create([
+                    'user_id' => $elder->id,
+                    'tag' => $request->tag,
+                    'valid_until' => \Carbon\Carbon::now()->addYear(),
+                    'renew_approval' => true
+                ]);
+                return redirect()->action('UserController@index');
+            }
+            return 'Algo salió mal :(';
+        }
     }
 
     /**

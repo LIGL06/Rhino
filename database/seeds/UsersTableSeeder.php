@@ -21,13 +21,5 @@ class UsersTableSeeder extends Seeder
             'address' => 'Blvd. Petrocel Km 1.3, Altamira, Tamaulipas',
             'password' => bcrypt('admin')
         ]);
-        DB::table('offices')->insert([
-            'address' => 'Domicilio sin Número',
-            'name' => 'Escuela Ficticia'
-        ]);
-        DB::table('schools')->insert([
-            'address' => 'Domicilio sin Número',
-            'name' => 'Escuela Ficticia'
-        ]);
     }
 }

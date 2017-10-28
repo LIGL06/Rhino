@@ -16,7 +16,7 @@ class CreateEldersTable extends Migration
         Schema::create('elders', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('office_id')->unsigned();
-            $table->integer('user_id')->unsigned();
+            $table->integer('user_id')->unsigned()->nullable();
             $table->string('SKU',45)->unique();
             $table->timestamps();
         });

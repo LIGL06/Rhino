@@ -68,7 +68,7 @@
                     <div class="col-md-5">
                         <div class="form-group">
                         {{Form::label('tag','Clave de Tarjeta')}}
-                        {{Form::text('tag',null, ['class' => 'form-control', 'placeholder' => 'Clave de Tarjeta'])}}
+                        {{Form::text('tag', $tag, ['class' => 'form-control', 'placeholder' => 'Clave de Tarjeta'])}}
                         </div>
                     </div>
                 </div>
