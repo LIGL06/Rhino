@@ -48,7 +48,7 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             {{Form::label('birthday','Cumpleaños')}}
-                            {{Form::date('birthday', \Carbon\Carbon::now()->subYears(27)),['class' => 'form-control']}}
+                            {{Form::date('birthday', \Carbon\Carbon::now()->subYears(27), ['class' => 'form-control'] )}}
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -93,7 +93,7 @@
                     </div>
                 </div>
                     {{Form::submit('Guardar Perfil', ['class' => 'btn'])}}
-                {{Form::close()}}
+                    {{Form::close()}}
                 </div>
             </div>
         </div>

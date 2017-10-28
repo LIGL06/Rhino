@@ -11,13 +11,15 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
+            @guest
 <div class="sidebar" data-background-color="black" data-active-color="success">
     	<div class="sidebar-wrapper" >
             <div class="logo">
-                <a href="dashboard.html" class="simple-text">
+            <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('app.name', 'Laravel') }}
-                </a>
+            </a>
             </div>
+            @else
             <ul class="nav">
                 <li class="active">
                     <a href="/home">
@@ -38,10 +40,11 @@
                     </a>
                 </li>
             </ul>
+            @endguest
     	</div>
-    </div>
+</div>
 
-    <div class="main-panel">
+    <div class="main-panel" id="app">
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -55,12 +58,27 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="index.html">
-                                <i class="fa fa-sign-out" aria-hidden="true"></i>
-                                <p>Cerrar sesión</p>
-                            </a>
-                        </li>
+                        @guest
+                            <li><a href="{{ route('login') }}">Login</a></li>
+                            <li><a href="{{ route('register') }}">Register</a></li>
+                        @else
+                        <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    {{ Auth::user()->fname }} <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                        <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                        Cerrar Sesión
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endguest
                     </ul>
                 </div>
             </div>

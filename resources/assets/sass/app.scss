@@ -6,16 +6,16 @@
 @import "variables";
 
 // Bootstrap
-@import url("https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css");
+@import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
 // Animate
-@import url("https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css");
+@import "~animate.css/animate";
 
 // Paper Dashboard
-@import url("https://github.com/creativetimofficial/paper-dashboard/blob/master/assets/css/paper-dashboard.css");
+@import "~paper-dashboard/assets/sass/paper-dashboard";
 
 // Font Awesome
-@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+@import "~font-awesome/scss/font-awesome";
 
 // Themify
-@import url("https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css");
+// @import "~themify-icons/themify-icons/_themify-icons";
