@@ -4,7 +4,8 @@ namespace Rhino\Http\Controllers;
 
 use Carbon\Carbon;
 use Rhino\Models\Card;
-use Rhino\Models\User;
+use Rhino\Models\Elder;
+use Rhino\Models\Student;
 use Illuminate\Http\Request;
 
 class CardController extends Controller
@@ -26,8 +27,9 @@ class CardController extends Controller
      */
     public function create()
     {
-        $persons = User::select('name','id')->get();
-        return view('cards.create', ['persons'=> $persons, ]);
+        $students = Student::whereHas('user')->with('user')->get();
+        $elders = Elder::whereHas('user')->with('user')->get();
+        return view('cards.create', ['students'=> $students,'elders'=> $elders ]);
     }
 
     /**
