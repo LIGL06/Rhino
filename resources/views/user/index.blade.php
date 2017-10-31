@@ -35,12 +35,14 @@
                                         @else
                                         <td>INAPAM</td>
                                         @endif
-                                        @if($user->card->renew_approval)
-                                        <td>Si</td>
-                                        @else
-                                        <td>No</td>
+                                        @if($user->card)
+                                            @if($user->card->renew_approval)
+                                            <td>Si</td>
+                                            @else
+                                            <td>No</td>
+                                            @endif
+                                            <td>{{$user->card->valid_until}}</td>
                                         @endif
-                                        <td>{{$user->card->valid_until}}</td>
                                         @if(Auth::user()->isCoordinator()||Auth::user()->isAdmin())
                                         <td><button type="button" name="editUser" class="btn btn-info btn-fill btn-wd editUser">Editar</button></td>
                                         @endif
