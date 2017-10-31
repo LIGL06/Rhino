@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
-class RolesTableSeeder extends Seeder
+class BusesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,11 +12,9 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('roles')->insert([
-            ['type' => 0],
-            ['type' => 1],
-            ['type' => 2],
-            ['type' => 3],
+        DB::table('buses')->insert([
+            'owner_id' => null,
+            'route_name' => 'Ruta sin destino'
         ]);
     }
 }

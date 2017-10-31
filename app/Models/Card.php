@@ -16,15 +16,6 @@ class Card extends Model
   ];
 
   /**
-   * The attributes that should be hidden for arrays.
-   *
-   * @var array
-   */
-  protected $hidden = [
-      'tag',
-  ];
-
-  /**
      * Indicates if the model should be timestamped.
      *
      * @var bool

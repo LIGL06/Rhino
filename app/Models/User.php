@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'role_id', 'age', 'address', 'phone', 'birthday','city','colonia','postal'
+        'fname','lname', 'email', 'password', 'role_id', 'age', 'address', 'phone', 'birthday','city','colonia','postal'
     ];
 
     /**
@@ -34,6 +34,14 @@ class User extends Authenticatable
     public function checkin()
     {
         return $this->hasMany('Rhino\Models\Checkin');
+    }
+
+    /**
+     * Get the user that owns the phone.
+     */
+    public function card()
+    {
+        return $this->hasOne('Rhino\Models\Card');
     }
 
     /**
